@@ -10,7 +10,8 @@ BaseModule::~BaseModule()
 
 }
 
-void BaseModule::execute() {
+void BaseModule::execute()
+{
     action();
     for (std::vector<EventListener*>::iterator i = m_listeners.begin(); i < m_listeners.end(); (*i)->call(),i++);
 }
