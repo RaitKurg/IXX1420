@@ -4,7 +4,8 @@
 #include "../Base/BaseModule.h"
 #include "../Base/MotorActuator.h"
 #include "../Base/UltrasonicSensor.h"
-#include "RadarMap.h"
+#include "RadarPoint.h"
+#include <vector>
 
 /**
  * Handles radar data generation
@@ -21,7 +22,7 @@ class RadarModule : public BaseModule
          * 
          * @return RadarMap&
          */
-        RadarMap& getRadarMap();
+        std::vector<RadarPoint> getPoints() const;
 
     protected:
 
@@ -35,7 +36,7 @@ class RadarModule : public BaseModule
         /**
          * Contains radar data
          */
-        RadarMap m_radarMap;
+        std::vector<RadarPoint> m_points;
 
         /**
          * Ultrasonic sensor for distance
