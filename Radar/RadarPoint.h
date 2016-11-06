@@ -14,6 +14,7 @@ class RadarPoint
         virtual ~RadarPoint();
 
         double getDistance() const;
+        double getAngle() const;
 
     private:
 

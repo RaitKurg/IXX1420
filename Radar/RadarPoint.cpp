@@ -16,6 +16,11 @@ double RadarPoint::getDistance() const
     return m_distance;
 }
 
+double RadarPoint::getAngle() const
+{
+    return m_angle;
+}
+
 void RadarPoint::setDistance(const double d)
 {
     m_distance = d;
