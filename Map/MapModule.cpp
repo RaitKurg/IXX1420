@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
-#include "../GuiTools/Window.h"
 
 MapModule::MapModule()
 {
@@ -52,20 +51,14 @@ void MapModule::action()
     double gx = 0.0;
     double gy = 0.0;
 
-    SDL_Renderer * renderer = Window::getInstance()->getRenderer();
-    SDL_SetRenderDrawColor(renderer, 0xFF, 0xAA, 0x00, 0xFF);
     int i = 0;
     for (std::vector<RadarPoint>::iterator p = localPoints.begin(); p != localPoints.end(); ++p) {
         double lx = p->getDistance() * sin(p->getAngle());
         double ly = p->getDistance() * cos(p->getAngle());
         globalPoints[i].x = cosFi*lx - sinFi*ly + gx;
         globalPoints[i].y = sinFi*lx + cosFi*ly + gy;
-        int x = (int)(globalPoints[i].x*10) + Window::WIDTH / 2, y = Window::HEIGHT - (int)(globalPoints[i].y*10) - 10;
-        SDL_RenderDrawPoint(renderer, x, y);
         ++i;
     }
-    SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-    SDL_RenderDrawPoint(renderer, Window::WIDTH/2, Window::HEIGHT - 10);
 
     /**
      * group edge points

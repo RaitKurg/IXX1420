@@ -1,15 +1,6 @@
 #include "Window.h"
 #include <cassert>
 
-Window* Window::getInstance()
-{
-    static Window * instance;
-    if (!instance) {
-        instance = new Window();
-    }
-    return instance;
-};
-
 Window::Window()
 {
     assert(SDL_Init(SDL_INIT_VIDEO) >= 0);

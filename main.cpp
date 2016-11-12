@@ -1,7 +1,7 @@
 #include "Map/MapModule.h"
 #include "Move/MoveModule.h"
 #include "Radar/RadarModule.h"
-#include "GuiTools/Window.h"
+#include "GuiTools/GuiModule.h"
 
 int main(int argc, char ** argv)
 {
@@ -9,26 +9,17 @@ int main(int argc, char ** argv)
     RadarModule radar;
     MoveModule move;
     MapModule map;
+    GuiModule gui;
 
     map.setRadarModule(&radar);
     map.setMoveModule(&move);
-
-    Window * window = Window::getInstance();
-    SDL_Renderer * gRenderer = window->getRenderer();
-    SDL_SetRenderDrawColor( gRenderer, 0x00, 0x00, 0x00, 0xFF );
-    SDL_RenderClear( gRenderer );
+    gui.setRadarModule(&radar);
 
     radar.execute();
     map.execute();
     move.execute();
 
-    SDL_RenderPresent( gRenderer );
-    try {
-        while(true) {
-            window->handleEvents();
-        }
-    } catch (int e) {}
-    delete window;
+    while (gui.windowNotClosed());
 
     return 0;
 }

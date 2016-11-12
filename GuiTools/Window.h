@@ -9,15 +9,13 @@ class Window
     private:
         SDL_Window * window = NULL;
         SDL_Renderer * renderer = NULL;
-        Window();
 
     public:
         static const int WIDTH = 640;
         static const int HEIGHT = 480;
         const char * TITLE = "IXX1420 Gui-Debug";
 
-        static Window * getInstance();
-
+        Window();
         ~Window();
         void update();
         void clear();
