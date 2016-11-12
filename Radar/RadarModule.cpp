@@ -5,11 +5,11 @@ RadarModule::RadarModule() : BaseModule()
 {
 
     // initialize points
-    m_points.reserve(32);
-    double angle = -90.0;
+    m_points.resize(32);
+    double angle = -1.5708; // -90 degrees
     for (int i = 0; i < 32; i++) {
         m_points[i].setAngle(angle);
-        angle += 5.625;
+        angle += 0.09817477; // 90/32 degrees
     }
 }
 
