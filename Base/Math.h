@@ -1,88 +1,60 @@
+/*
+    description
+        A colleciton of basic math operations
+
+    author
+        Marek Grencštein
+*/
+
 #ifndef BASE_MATH_H
 #define BASE_MATH_H
 
-#include <iostream>
-
 template <class T>
-class Matrix
+struct vec2
 {
+    T x;
+    T y;
 
-    public:
-        Matrix() {}
+    vec2() {}
+    vec2(T _x, T _y)
+    {
+        x = _x;
+        y = _y;
+    }
 
-        Matrix(int rows, int cols)
-        {
-            m_values = new T[rows*cols];
-            for (int i = 0; i < rows*cols; i++) {
-                m_values[i] = 0;
-            }
-            m_rows = rows;
-            m_cols = cols;
-        }
+    vec2 operator+ (const vec2& v)
+    {
+        vec2 r;
+        r.x = x + v.x;
+        r.y = y + v.y;
+        return r;
+    }
 
-        ~Matrix()
-        {
-            delete [] m_values;
-        }
+    vec2 operator- (const vec2& v)
+    {
+        vec2 r;
+        r.x = x - v.x;
+        r.y = y - v.y;
+        return r;
+    }
 
-        T get(int r, int c)
-        {
-            return m_values[c + r*m_cols];
-        }
+    void operator= (const vec2& v)
+    {
+        x = v.x;
+        y = v.y;
+    }
 
-        void set(int r, int c, T value)
-        {
-            m_values[c + r*m_cols] = value;   
-        }
+    void operator+= (const vec2& v)
+    {
+        x = x + v.x;
+        y = y + v.y;
+    }
 
-        void print()
-        {
-            int offset = 0;
-            for (int r = 0; r < m_rows; r++) {
-                for (int c = offset; c < offset + m_cols; c++) {
-                    std::cout << m_values[c] << "\t";
-                }
-                std::cout << "\n";
-                offset += m_cols;
-            }
-        }
-
-        Matrix<T> operator + (Matrix<T>& B)
-        {
-            Matrix<T> C(m_rows, m_cols);
-            for (int i = 0; i < m_rows*m_cols; i++) {
-                C.m_values[i] = m_values[i] + B.m_values[i];
-            }
-            return C;
-        }
-
-        Matrix<T> operator - (Matrix<T>& B)
-        {
-            Matrix<T> C(m_rows, m_cols);
-            for (int i = 0; i < m_rows*m_cols; i++) {
-                C.m_values[i] = m_values[i] - B.m_values[i];
-            }
-            return C;
-        }
-
-        void operator += (Matrix<T>& B)
-        {
-            for (int i = 0; i < m_rows*m_cols; i++) {
-                m_values[i] = m_values[i] + B.m_values[i];
-            }
-        }
-
-        void operator -= (Matrix<T>& B)
-        {
-            for (int i = 0; i < m_rows*m_cols; i++) {
-                m_values[i] = m_values[i] - B.m_values[i];
-            }
-        }
-
-    private:
-        T * m_values;
-        int m_rows;
-        int m_cols;
+    void operator-= (const vec2& v)
+    {
+        x = x - v.x;
+        y = y - v.y;
+    }
 
 };
     
