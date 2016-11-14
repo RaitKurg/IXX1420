@@ -18,6 +18,7 @@ int main()
 	SM_28BYJ48  * motor2 = test.GetSM_28BYJ48(27, 5, 6, 13);
 	MoveModule mm(motor1, motor2);
 	mm.Push(mm.FORWARD_5);
+	mm.Push(mm.FORWARD_3);
 	mm.Action();
 	
 	getchar();
