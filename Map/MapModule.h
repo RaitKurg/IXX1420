@@ -2,13 +2,19 @@
 #define MAP_MODULE_H
 
 #include "../Base/BaseModule.h"
+#include "../Radar/RadarModule.h"
+#include "../Move/MoveModule.h"
+#include "Line.h"
+#include <vector>
 
-class MoveModule;
-class RadarModule;
+/*
+    description
+        handles map generation
+        gives moving orders to move module
 
-/**
- * Handles mapping
- */
+    author
+        Marek Grencštein
+*/
 class MapModule : public BaseModule
 {
 
