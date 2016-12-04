@@ -9,6 +9,7 @@ RadarModule::RadarModule() : BaseModule()
     double angle = -1.5708; // -90 degrees
     for (int i = 0; i < 32; i++) {
         m_points[i].setAngle(angle);
+        m_points[i].setDistance((double)i);
         angle += 0.09817477; // 90/32 degrees
     }
 }
