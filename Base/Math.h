@@ -22,6 +22,16 @@ struct vec2
         y = _y;
     }
 
+    double lengthSq()
+    {
+        return x*x + y*y;
+    }
+
+    static T dot(const vec2& a, const vec2& b)
+    {
+        return a.x*b.x + a.y*b.y;
+    }
+
     vec2 operator+ (const vec2& v)
     {
         vec2 r;
