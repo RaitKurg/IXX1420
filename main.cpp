@@ -14,10 +14,12 @@ int main(int argc, char ** argv)
     map.setRadarModule(&radar);
     map.setMoveModule(&move);
     gui.setRadarModule(&radar);
+    gui.setMapModule(&map);
 
     radar.execute();
     map.execute();
     move.execute();
+    gui.execute();
 
     while (gui.windowNotClosed());
 

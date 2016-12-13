@@ -32,11 +32,13 @@ void Line::interpolate(void)
 
     // slope parameters
     double m = (meanX*meanY - meanXY)/(meanX*meanX - meanXX);
-    double b = meanY - m*meanX;
+    double bb = meanY - m*meanX;
 
     a = -m;
     b = 1.0;
-    c = -b;
+    c = -bb;
+
+    std::cout << a << "x + " << b << "y + " << c << "\n";
 }
 
 vec2<double> Line::intersect(const Line& line)
@@ -48,4 +50,24 @@ vec2<double> Line::intersect(const Line& line)
     p.y = -(a*line.c - line.a*c)*oneOverDotProduct;
 
     return p;
+}
+
+vec2<double> Line::getFirstCoordinates()
+{
+    return getLineCoordinates(points[0]);
+}
+
+vec2<double> Line::getLastCoordinates()
+{
+    return getLineCoordinates(points[points.size() -1]);
+}
+
+vec2<double> Line::getLineCoordinates(vec2<double> p)
+{
+    vec2<double> res;
+
+    res.x = p.x;
+    res.y = -(a*res.x + c);
+
+    return res;
 }

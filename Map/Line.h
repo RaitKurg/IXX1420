@@ -14,11 +14,16 @@ class Line
         double c;
         std::vector<vec2<double>> points;
 
+        vec2<double> getLineCoordinates(vec2<double> p);
+
     public:
         void push(vec2<double>&);
         void interpolate(void);
 
         vec2<double> intersect(const Line&);
+
+        vec2<double> getFirstCoordinates();
+        vec2<double> getLastCoordinates();
 
 };
 

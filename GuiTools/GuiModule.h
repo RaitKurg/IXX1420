@@ -3,6 +3,7 @@
 
 #include "../Base/BaseModule.h"
 #include "../Radar/RadarModule.h"
+#include "../Map/MapModule.h"
 #include "Window.h"
 
 class RadarListener;
@@ -15,6 +16,7 @@ class GuiModule : public BaseModule
         virtual ~GuiModule();
 
         void setRadarModule(RadarModule*);
+        void setMapModule(MapModule*);
         bool windowNotClosed();
 
     protected:
@@ -27,6 +29,7 @@ class GuiModule : public BaseModule
 
         Window m_window;
         RadarModule * m_radarModule;
+        MapModule * m_mapModule;
 
 };
 

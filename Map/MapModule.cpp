@@ -22,10 +22,14 @@ void MapModule::setMoveModule(MoveModule * moveModule)
     m_moveModule = moveModule;
 }
 
+std::vector<Line*> MapModule::getLines()
+{
+    return m_lines;
+}
+
 void MapModule::action()
 {
     std::vector<RadarPoint> points = m_radarModule->getPoints();
-    std::vector<Line*> lines;
 
     Line * activeLine = new Line();
     vec2<double> prevPoint = points[0].getCoordinates();
@@ -45,12 +49,33 @@ void MapModule::action()
         if (angleSq >= 0.5) {
             activeLine->push(curPoint);
         } else {
-            lines.push_back(activeLine);
+            m_lines.push_back(activeLine);
             activeLine = new Line();
         }
 
         prevPoint = curPoint;
     }
-    lines.push_back(activeLine);
+    m_lines.push_back(activeLine);
 
+    for (int i = 0; i < m_lines.size(); ++i) {
+        m_lines[i]->interpolate();
+    }
+
+    m_sections.push_back(new Section());
+    m_sections.push_back(new Section());
+
+    m_sections[0]->A = m_lines[0]->getFirstCoordinates();
+    m_sections[1]->B = m_lines[1]->getLastCoordinates();
+
+    vec2<double> intersect = m_lines[0]->intersect(*m_lines[1]);
+
+    m_sections[0]->B = intersect;
+    m_sections[1]->A = intersect;
+
+    std::cout << "TOTAL: " << m_lines.size() << "\n";
+}
+
+std::vector<Section*> MapModule::getSections()
+{
+    return m_sections;
 }

@@ -7,6 +7,12 @@
 #include "Line.h"
 #include <vector>
 
+struct Section
+{
+    vec2<double> A;
+    vec2<double> B;
+};
+
 /*
     description
         handles map generation
@@ -25,12 +31,18 @@ class MapModule : public BaseModule
         void setRadarModule(RadarModule * radarModule);
         void setMoveModule(MoveModule * moveModule);
 
+        std::vector<Line*> getLines();
+        std::vector<Section*> getSections();
+
     protected:
         void action();
 
     private:
         RadarModule * m_radarModule;
         MoveModule * m_moveModule;
+
+        std::vector<Section*> m_sections;
+        std::vector<Line*> m_lines;
     
 };
 
