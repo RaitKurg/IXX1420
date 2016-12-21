@@ -51,3 +51,13 @@ void Map::merge()
         !Is not critical
     */
 }
+
+std::vector<vec2<double>>& Map::getPoints()
+{
+    return m_points;
+}
+
+std::vector<int>& Map::getIndices()
+{
+    return m_indices;
+}

@@ -33,6 +33,19 @@ class Map
         */
         void merge();
 
+        /*
+            Description:
+                Returns vector of map points
+        */
+        std::vector<vec2<double>>& getPoints();
+
+        /*
+            Description:
+                Returns indices
+        */
+        std::vector<int>& getIndices();
+
+
     private:
 
 

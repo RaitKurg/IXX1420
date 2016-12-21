@@ -37,8 +37,6 @@ void Line::interpolate(void)
     a = -m;
     b = 1.0;
     c = -bb;
-
-    std::cout << a << "x + " << b << "y + " << c << "\n";
 }
 
 vec2<double> Line::intersect(const Line& line)
