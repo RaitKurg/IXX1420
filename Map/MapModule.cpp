@@ -56,7 +56,7 @@ void MapModule::action()
     lines.push_back(activeLine);
 
     for (int i = 0; i < lines.size(); ++i) {
-        lines[i]->interpolate();
+        lines[i]->generateRegressionLine();
     }
 
     vec2<double> intersection;

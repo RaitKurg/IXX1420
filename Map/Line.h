@@ -35,8 +35,17 @@ class Line
         */
         bool isConnectedToNext;
 
+        /*
+            Description:
+                Push new point for this line
+        */
         void push(vec2<double>&);
-        void interpolate(void);
+
+        /*
+            Description:
+                Generates Regression line based on pushed points
+        */
+        void generateRegressionLine(void);
 
         /*
             Return:

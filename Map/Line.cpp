@@ -6,7 +6,7 @@ void Line::push(vec2<double>& p)
     points.push_back(p);
 }
 
-void Line::interpolate(void)
+void Line::generateRegressionLine(void)
 {
     /*
     Using regression formula:
