@@ -6,7 +6,7 @@ all:
 	@echo "\tinstall-sdl - installs SDL2 (needed for 'gui-debug')"
 
 compile:
-	g++ -std=c++11 main.cpp Base/*.cpp Radar/*.cpp Move/*.cpp Map/*.cpp -o robot
+	make debug ;
 
 run:
 	./robot
