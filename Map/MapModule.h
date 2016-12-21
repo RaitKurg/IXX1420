@@ -6,20 +6,15 @@
 #include "../Move/MoveModule.h"
 #include "Line.h"
 #include <vector>
-
-struct Section
-{
-    vec2<double> A;
-    vec2<double> B;
-};
+#include "Map.h"
 
 /*
-    description
-        handles map generation
-        gives moving orders to move module
+    Description:
+        Handles map generation.
+        Gives moving orders to move module
 
-    author
-        Marek Grencštein
+    Author:
+        Marek Grencštein <marekgrencstein@gmail.com>
 */
 class MapModule : public BaseModule
 {
@@ -31,8 +26,7 @@ class MapModule : public BaseModule
         void setRadarModule(RadarModule * radarModule);
         void setMoveModule(MoveModule * moveModule);
 
-        std::vector<Line*> getLines();
-        std::vector<Section*> getSections();
+        Map& getMap();
 
     protected:
         void action();
@@ -41,8 +35,7 @@ class MapModule : public BaseModule
         RadarModule * m_radarModule;
         MoveModule * m_moveModule;
 
-        std::vector<Section*> m_sections;
-        std::vector<Line*> m_lines;
+        Map m_map;
     
 };
 

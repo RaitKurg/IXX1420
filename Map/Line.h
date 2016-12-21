@@ -16,7 +16,19 @@ class Line
 
         vec2<double> getLineCoordinates(vec2<double> p);
 
+
     public:
+
+        Line() {
+            isConnectedToNext = true;
+        }
+
+        /*
+            Description:
+                A true/false if the next line should share common point or not
+        */
+        bool isConnectedToNext;
+
         void push(vec2<double>&);
         void interpolate(void);
 

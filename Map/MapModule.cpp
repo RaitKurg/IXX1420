@@ -22,19 +22,18 @@ void MapModule::setMoveModule(MoveModule * moveModule)
     m_moveModule = moveModule;
 }
 
-std::vector<Line*> MapModule::getLines()
-{
-    return m_lines;
-}
-
 void MapModule::action()
 {
     std::vector<RadarPoint> points = m_radarModule->getPoints();
 
+    std::vector<Line*> lines;
+
     Line * activeLine = new Line();
     vec2<double> prevPoint = points[0].getCoordinates();
     vec2<double> curPoint;
+
     for (int i = 1; i + 1 < points.size(); ++i) {
+
         curPoint = points[i].getCoordinates();
         points[i+1].getCoordinates();
 
@@ -43,36 +42,53 @@ void MapModule::action()
 
         double dot = vec2<double>::dot(AB, BC);
         double angleSq = (dot*dot)/(AB.lengthSq() * BC.lengthSq());
-        
+
         if (angleSq >= 0.5) {
             activeLine->push(curPoint);
         } else {
-            m_lines.push_back(activeLine);
+            lines.push_back(activeLine);
             activeLine = new Line();
         }
 
         prevPoint = curPoint;
     }
-    m_lines.push_back(activeLine);
+    activeLine->isConnectedToNext = false;
+    lines.push_back(activeLine);
 
-    for (int i = 0; i < m_lines.size(); ++i) {
-        m_lines[i]->interpolate();
+    for (int i = 0; i < lines.size(); ++i) {
+        lines[i]->interpolate();
     }
 
-    m_sections.push_back(new Section());
-    m_sections.push_back(new Section());
+    vec2<double> intersection;
+    bool connectToPrevious = false;
+    vec2<double> A;
+    vec2<double> B;
+    for (int i = 0; i < lines.size(); ++i) {
+        //A
+        if (connectToPrevious) {
+            A = intersection;
+        } else {
+            A = lines[i]->getFirstCoordinates();
+        }
+        connectToPrevious = lines[i]->isConnectedToNext;
+        //B
+        if (connectToPrevious) {
+            intersection = lines[i]->intersect(*lines[i+1]);
+            B = intersection;
+        } else {
+            B = lines[i]->getLastCoordinates();
+        }
+        m_map.insertSection(A, B);
+    }
 
-    m_sections[0]->A = m_lines[0]->getFirstCoordinates();
-    m_sections[1]->B = m_lines[1]->getLastCoordinates();
-
-    vec2<double> intersect = m_lines[0]->intersect(*m_lines[1]);
-
-    m_sections[0]->B = m_lines[0]->getLastCoordinates();
-    m_sections[1]->A = m_lines[1]->getFirstCoordinates();
+    // clean-up
+    for (int i = 0; i < lines.size(); ++i) {
+        delete lines[i];
+    }
 
 }
 
-std::vector<Section*> MapModule::getSections()
+Map& MapModule::getMap()
 {
-    return m_sections;
+    return m_map;
 }
