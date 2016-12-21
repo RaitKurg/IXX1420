@@ -26,6 +26,10 @@ class MapModule : public BaseModule
         void setRadarModule(RadarModule * radarModule);
         void setMoveModule(MoveModule * moveModule);
 
+        /*
+            Description:
+                Returns reference to Map
+        */
         Map& getMap();
 
     protected:
