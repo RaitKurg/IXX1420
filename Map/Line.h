@@ -1,5 +1,11 @@
-#ifndef _Map_Edge_h_
-#define _Map_Edge_h_
+/*
+    Description:
+        Line class containing regression line and intersection with additional methods
+    Author:
+        Marek Grencštein <marekgrencstein@gmail.com>
+*/
+#ifndef _Map_Line_h_
+#define _Map_Line_h_
 
 #include "../Base/Math.h"
 #include <vector>
@@ -32,11 +38,24 @@ class Line
         void push(vec2<double>&);
         void interpolate(void);
 
+        /*
+            Return:
+                Intersection point between two lines
+        */
         vec2<double> intersect(const Line&);
 
+        /*
+            Return:
+                Closest coordinate on the line based on first point in points array
+        */
         vec2<double> getFirstCoordinates();
+
+        /*
+            Return:
+                Closest coordinate on the line based on last point in points array
+        */
         vec2<double> getLastCoordinates();
 
 };
 
-#endif // _Map_Edge_h_
+#endif // _Map_Line_h_

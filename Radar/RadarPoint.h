@@ -1,12 +1,16 @@
-#ifndef RADAR_POINT_H
-#define RADAR_POINT_H
+/*
+    Description:
+        RadarPoint holds distance information
+    Author:
+        Marek Grencštein <marekgrencstein@gmail.com>
+*/
+#ifndef _Radar_RadarPoint_h_
+#define _Radar_RadarPoint_h_
+        
 #include "../Base/Math.h"
 
 class RadarModule;
 
-/**
- * RadarPoint holds distance information
- */
 class RadarPoint
 {
 
@@ -21,11 +25,12 @@ class RadarPoint
 
     private:
 
+        /*
+            Idea:
+                Only RadarModule should be able to set angles and distances
+        */
         friend class RadarModule;
-        
-        /**
-         * distance and angle can be set only in radar module
-         */
+
         void setDistance(const double d);
         void setAngle(const double a);
         void calcCoordinates();

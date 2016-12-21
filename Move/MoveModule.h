@@ -1,11 +1,14 @@
-#ifndef MOVE_MODULE_H
-#define MOVE_MODULE_H
+/*
+    Description:
+        Handles robot movement
+    Author:
+        Marek Grencštein <marekgrencstein@gmail.com>
+*/
+#ifndef _Move_MoveModule_h_
+#define _Move_MoveModule_h_
 
 #include "../Base/BaseModule.h"
 
-/**
- * Handles robot movement
- */
 class MoveModule : public BaseModule
 {
 
@@ -14,10 +17,6 @@ class MoveModule : public BaseModule
         virtual ~MoveModule();
 
     protected:
-
-        /**
-         * Logic entrypoint
-         */
         void action();
 
     private:

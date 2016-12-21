@@ -1,13 +1,3 @@
-#ifndef MAP_MODULE_H
-#define MAP_MODULE_H
-
-#include "../Base/BaseModule.h"
-#include "../Radar/RadarModule.h"
-#include "../Move/MoveModule.h"
-#include "Line.h"
-#include <vector>
-#include "Map.h"
-
 /*
     Description:
         Handles map generation.
@@ -16,6 +6,16 @@
     Author:
         Marek Grencštein <marekgrencstein@gmail.com>
 */
+#ifndef _Map_MapModule_h_
+#define _Map_MapModule_h_
+
+#include "../Base/BaseModule.h"
+#include "../Radar/RadarModule.h"
+#include "../Move/MoveModule.h"
+#include "Line.h"
+#include <vector>
+#include "Map.h"
+
 class MapModule : public BaseModule
 {
 

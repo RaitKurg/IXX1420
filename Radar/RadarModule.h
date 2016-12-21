@@ -1,5 +1,11 @@
-#ifndef RADAR_MODULE_H
-#define RADAR_MODULE_H
+/*
+    Description:
+        Handles radar data generation
+    Author:
+        Marek Grencštein <marekgrencstein@gmail.com>
+*/
+#ifndef _Radar_RadarModule_h_
+#define _Radar_RadarModule_h_
 
 #include "../Base/BaseModule.h"
 #include "../Base/MotorActuator.h"
@@ -7,9 +13,6 @@
 #include "RadarPoint.h"
 #include <vector>
 
-/**
- * Handles radar data generation
- */
 class RadarModule : public BaseModule
 {
 
@@ -17,35 +20,29 @@ class RadarModule : public BaseModule
         RadarModule();
         virtual ~RadarModule();
 
-        /**
-         * Returns local map of what radar sees
-         * 
-         * @return RadarMap&
-         */
         std::vector<RadarPoint> getPoints() const;
 
     protected:
-
-        /**
-         * Logic entrypoint
-         */
         void action();
 
     private:
 
-        /**
-         * Contains radar data
-         */
+        /*
+            Description:
+                Contains radar data
+        */
         std::vector<RadarPoint> m_points;
 
-        /**
-         * Ultrasonic sensor for distance
-         */
+        /*
+            Description:
+                Ultrasonic sensor for distance
+        */
         UltrasonicSensor m_sensor;
 
-        /**
-         * Motor to change ultrasonic sensor direction
-         */
+        /*
+            Description:
+                Motor to change ultrasonic sensor direction
+        */
         MotorActuator m_motor;
     
 };

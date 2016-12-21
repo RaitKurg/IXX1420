@@ -63,4 +63,4 @@ class Map
 
 };
 
-#endif
+#endif // _Map_Map_h_

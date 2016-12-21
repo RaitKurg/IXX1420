@@ -1,11 +1,12 @@
-#ifndef BASE_MODULE_H
-#define BASE_MODULE_H
+#ifndef _Base_BaseModule_h_
+#define _Base_BaseModule_h_
 
 #include <vector>
 
-/**
- * Abstract base event listener. All module post execute event listeners must extend this class
- */
+/*
+    Description:
+        Abstract base event listener. All module post execute event listeners must extend this class
+*/
 class EventListener
 {
 
@@ -14,9 +15,13 @@ class EventListener
 
 };
 
-/**
- * Semi-abstract base module class. All modules must extend this class
- */
+/*
+    Description:
+        Semi-abstract base module class. All modules must extend this class.
+    Example:
+        All modules extending this class have their main entrypoint via 'void execute();' method
+        'virtual void action();' should contain main logic on entering per module
+*/
 class BaseModule
 {
 
@@ -24,23 +29,24 @@ class BaseModule
         BaseModule();
         virtual ~BaseModule();
         
-        /**
-         * Main module entrypoint
-         */
+        /*
+            Main module entrypoint
+        */
         void execute();
 
-        /**
-         * Adds postExecute event listener to the module (events are called right before execute end)
-         * 
-         * @param EventListener * listener
-         */
+        /*
+            Description:
+                Adds postExecute event listener to the module (events are called right before execute end)
+            Parameters:
+                EventListener * listener
+        */
         void addListener(EventListener * listener);
 
     protected:
 
-        /**
-         * Abstract method (must be overriden), module specific logic entrypoint
-         */
+        /*
+            Abstract method (must be overriden), module specific logic entrypoint
+        */
         virtual void action() = 0;
 
     private:
@@ -48,4 +54,4 @@ class BaseModule
 
 };
 
-#endif
+#endif // _Base_BaseModule_h_

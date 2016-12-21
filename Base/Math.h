@@ -1,13 +1,13 @@
 /*
-    description
+    Description
         A colleciton of basic math operations
 
-    author
-        Marek Grencštein
+    Author:
+        Marek Grencštein <marekgrencstein@gmail.com>
 */
 
-#ifndef BASE_MATH_H
-#define BASE_MATH_H
+#ifndef _Base_Math_h_
+#define _Base_Math_h_
 
 template <class T>
 struct vec2
@@ -68,4 +68,4 @@ struct vec2
 
 };
     
-#endif
+#endif // _Base_Math_h_
