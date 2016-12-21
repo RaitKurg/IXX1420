@@ -48,18 +48,18 @@ void GuiModule::drawLocalMap()
     SDL_RenderClear(renderer);
 
     Map map = m_mapModule->getMap();
-    /*
-    std::vector<Section*> sections = m_mapModule->getSections();
-    for (int i = 0; i < sections.size(); ++i) {
-        SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF*i, 0xFF);
-        vec2<double> A = sections[i]->A;
-        vec2<double> B = sections[i]->B;
-        std::cout << A.x << ":" << A.y <<"\n";
+
+    std::vector<vec2<double>> points = map.getPoints();
+    std::vector<int> indices = map.getIndices();
+    for (int i = 0; i + 1 < indices.size(); i += 2) {
+        SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+        vec2<double> A = points[indices[i]];
+        vec2<double> B = points[indices[i+1]];
         SDL_RenderDrawLine(renderer,
-            (int)(A.y + Window::WIDTH / 2),Window::HEIGHT - (int)(A.x) - 10,
-            (int)(B.y + Window::WIDTH / 2),Window::HEIGHT - (int)(B.x) - 10
+            (int)(A.x + Window::WIDTH / 2),Window::HEIGHT - (int)(A.y) - 10,
+            (int)(B.x + Window::WIDTH / 2),Window::HEIGHT - (int)(B.y) - 10
         );
-    }*/
+    }
 
     std::vector<RadarPoint> localPoints = m_radarModule->getPoints();
     SDL_SetRenderDrawColor(renderer, 0xFF, 0xAA, 0x00, 0xFF);
