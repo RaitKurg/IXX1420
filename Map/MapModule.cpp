@@ -38,14 +38,12 @@ void MapModule::action()
         curPoint = points[i].getCoordinates();
         points[i+1].getCoordinates();
 
-
         vec2<double> AB = curPoint - prevPoint;
         vec2<double> BC = points[i+1].getCoordinates() - curPoint;
 
         double dot = vec2<double>::dot(AB, BC);
         double angleSq = (dot*dot)/(AB.lengthSq() * BC.lengthSq());
         
-        std::cout << angleSq << "\n";
         if (angleSq >= 0.5) {
             activeLine->push(curPoint);
         } else {
@@ -69,10 +67,9 @@ void MapModule::action()
 
     vec2<double> intersect = m_lines[0]->intersect(*m_lines[1]);
 
-    m_sections[0]->B = intersect;
-    m_sections[1]->A = intersect;
+    m_sections[0]->B = m_lines[0]->getLastCoordinates();
+    m_sections[1]->A = m_lines[1]->getFirstCoordinates();
 
-    std::cout << "TOTAL: " << m_lines.size() << "\n";
 }
 
 std::vector<Section*> MapModule::getSections()
