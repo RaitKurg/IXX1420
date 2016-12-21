@@ -2,6 +2,7 @@
 #include "RadarListener.h"
 #include "../Radar/RadarPoint.h"
 #include <cmath>
+#include "../Map/Map.h"
 
 GuiModule::GuiModule()
 {
@@ -46,6 +47,8 @@ void GuiModule::drawLocalMap()
     SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF);
     SDL_RenderClear(renderer);
 
+    Map map = m_mapModule->getMap();
+    /*
     std::vector<Section*> sections = m_mapModule->getSections();
     for (int i = 0; i < sections.size(); ++i) {
         SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF*i, 0xFF);
@@ -56,7 +59,7 @@ void GuiModule::drawLocalMap()
             (int)(A.y + Window::WIDTH / 2),Window::HEIGHT - (int)(A.x) - 10,
             (int)(B.y + Window::WIDTH / 2),Window::HEIGHT - (int)(B.x) - 10
         );
-    }
+    }*/
 
     std::vector<RadarPoint> localPoints = m_radarModule->getPoints();
     SDL_SetRenderDrawColor(renderer, 0xFF, 0xAA, 0x00, 0xFF);
