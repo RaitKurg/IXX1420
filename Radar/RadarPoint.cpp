@@ -36,8 +36,8 @@ void RadarPoint::setAngle(const double a)
 
 void RadarPoint::calcCoordinates()
 {
-    m_coordinates.x = cos(m_angle)*m_distance;
-    m_coordinates.y = sin(m_angle)*m_distance;
+    m_coordinates.x = sin(m_angle)*m_distance;
+    m_coordinates.y = cos(m_angle)*m_distance;
 }
 
 vec2<double> RadarPoint::getCoordinates()
