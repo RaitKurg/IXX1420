@@ -1,12 +1,12 @@
 #include "Line.h"
 #include <iostream>
 
-void Line::push(vec2<double>& p)
+void Line::Push(vec2<double>& p)
 {
     points.push_back(p);
 }
 
-void Line::generateRegressionLine(void)
+void Line::GenerateRegressionLine(void)
 {
     /*
     Using regression formula:
@@ -39,7 +39,7 @@ void Line::generateRegressionLine(void)
     c = -bb;
 }
 
-vec2<double> Line::intersect(const Line& line)
+vec2<double> Line::Intersect(const Line& line)
 {
     vec2<double> p;
 
@@ -50,17 +50,17 @@ vec2<double> Line::intersect(const Line& line)
     return p;
 }
 
-vec2<double> Line::getFirstCoordinates()
+vec2<double> Line::GetFirstCoordinates()
 {
-    return getLineCoordinates(points[0]);
+    return GetLineCoordinates(points[0]);
 }
 
-vec2<double> Line::getLastCoordinates()
+vec2<double> Line::GetLastCoordinates()
 {
-    return getLineCoordinates(points[points.size() -1]);
+    return GetLineCoordinates(points[points.size() -1]);
 }
 
-vec2<double> Line::getLineCoordinates(vec2<double> p)
+vec2<double> Line::GetLineCoordinates(vec2<double> p)
 {
     vec2<double> res;
 

@@ -12,35 +12,35 @@ RadarPoint::~RadarPoint()
 
 }
 
-double RadarPoint::getDistance() const
+double RadarPoint::GetDistance() const
 {
     return m_distance;
 }
 
-double RadarPoint::getAngle() const
+double RadarPoint::GetAngle() const
 {
     return m_angle;
 }
 
-void RadarPoint::setDistance(const double d)
+void RadarPoint::SetDistance(const double d)
 {
     m_distance = d;
-    calcCoordinates();
+    CalcCoordinates();
 }
 
-void RadarPoint::setAngle(const double a)
+void RadarPoint::SetAngle(const double a)
 {
     m_angle = a;
-    calcCoordinates();
+    CalcCoordinates();
 }
 
-void RadarPoint::calcCoordinates()
+void RadarPoint::CalcCoordinates()
 {
     m_coordinates.x = sin(m_angle)*m_distance;
     m_coordinates.y = cos(m_angle)*m_distance;
 }
 
-vec2<double> RadarPoint::getCoordinates()
+vec2<double> RadarPoint::GetCoordinates()
 {
     return m_coordinates;
 }

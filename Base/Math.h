@@ -22,7 +22,7 @@ struct vec2
         y = _y;
     }
 
-    double lengthSq()
+    double LengthSq()
     {
         return x*x + y*y;
     }

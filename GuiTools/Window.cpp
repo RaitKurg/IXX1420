@@ -19,8 +19,8 @@ Window::Window()
     renderer = SDL_CreateRenderer( window, -1, SDL_RENDERER_ACCELERATED );
     assert( renderer != NULL );
 
-    clear();
-    update();
+    Clear();
+    Update();
 }
 
 Window::~Window()
@@ -30,9 +30,9 @@ Window::~Window()
     SDL_Quit();
 }
 
-void Window::clear()
+void Window::Clear()
 {
-    SDL_Surface * surface = getSurface();
+    SDL_Surface * surface = GetSurface();
     SDL_FillRect(
         surface,
         NULL,
@@ -43,17 +43,17 @@ void Window::clear()
     );
 }
 
-void Window::update()
+void Window::Update()
 {
     SDL_UpdateWindowSurface(window);
 }
 
-SDL_Surface * Window::getSurface()
+SDL_Surface * Window::GetSurface()
 {
     return SDL_GetWindowSurface(window);
 }
 
-void Window::handleEvents()
+void Window::HandleEvents()
 {
     SDL_Event e;
     while (SDL_PollEvent(&e) != 0) {
@@ -63,7 +63,7 @@ void Window::handleEvents()
     }
 }
 
-SDL_Renderer * Window::getRenderer()
+SDL_Renderer * Window::GetRenderer()
 {
     return renderer;
 }

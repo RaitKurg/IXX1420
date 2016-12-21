@@ -1,5 +1,4 @@
 #include "GuiModule.h"
-#include "RadarListener.h"
 #include "../Radar/RadarPoint.h"
 #include <cmath>
 #include "../Map/Map.h"
@@ -14,43 +13,42 @@ GuiModule::~GuiModule()
 
 }
 
-void GuiModule::setRadarModule(RadarModule * radar)
+void GuiModule::SetRadarModule(RadarModule * radar)
 {
     m_radarModule = radar;
-    //m_radarModule->addListener(new RadarListener(this));
 }
 
-void GuiModule::setMapModule(MapModule * map)
+void GuiModule::SetMapModule(MapModule * map)
 {
     m_mapModule = map;
 }
 
-bool GuiModule::windowNotClosed() {
+bool GuiModule::WindowNotClosed() {
     try {
-        m_window.handleEvents();
+        m_window.HandleEvents();
         return true;
     } catch (int e) {
         return false;
     }
 }
 
-void GuiModule::action()
+void GuiModule::Action()
 {
-    drawLocalMap();
+    DrawLocalMap();
 }
 
 #include <iostream>
 
-void GuiModule::drawLocalMap()
+void GuiModule::DrawLocalMap()
 {
-    SDL_Renderer * renderer = m_window.getRenderer();
+    SDL_Renderer * renderer = m_window.GetRenderer();
     SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF);
     SDL_RenderClear(renderer);
 
-    Map map = m_mapModule->getMap();
+    Map map = m_mapModule->GetMap();
 
-    std::vector<vec2<double>> points = map.getPoints();
-    std::vector<int> indices = map.getIndices();
+    std::vector<vec2<double>> points = map.GetPoints();
+    std::vector<int> indices = map.GetIndices();
     for (int i = 0; i + 1 < indices.size(); i += 2) {
         SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
         vec2<double> A = points[indices[i]];
@@ -61,11 +59,11 @@ void GuiModule::drawLocalMap()
         );
     }
 
-    std::vector<RadarPoint> localPoints = m_radarModule->getPoints();
+    std::vector<RadarPoint> localPoints = m_radarModule->GetPoints();
     SDL_SetRenderDrawColor(renderer, 0xFF, 0xAA, 0x00, 0xFF);
     for (std::vector<RadarPoint>::iterator p = localPoints.begin(); p != localPoints.end(); ++p) {
-        double lx = p->getDistance() * sin(p->getAngle());
-        double ly = p->getDistance() * cos(p->getAngle());
+        double lx = p->GetDistance() * sin(p->GetAngle());
+        double ly = p->GetDistance() * cos(p->GetAngle());
         int x = (int)(lx) + Window::WIDTH / 2, y = Window::HEIGHT - (int)(ly) - 10;
         SDL_RenderDrawPoint(renderer, x, y);
         SDL_RenderDrawPoint(renderer, x+1, y);

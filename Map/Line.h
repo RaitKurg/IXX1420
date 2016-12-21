@@ -20,7 +20,7 @@ class Line
         double c;
         std::vector<vec2<double>> points;
 
-        vec2<double> getLineCoordinates(vec2<double> p);
+        vec2<double> GetLineCoordinates(vec2<double> p);
 
 
     public:
@@ -39,31 +39,31 @@ class Line
             Description:
                 Push new point for this line
         */
-        void push(vec2<double>&);
+        void Push(vec2<double>&);
 
         /*
             Description:
                 Generates Regression line based on pushed points
         */
-        void generateRegressionLine(void);
+        void GenerateRegressionLine(void);
 
         /*
             Return:
                 Intersection point between two lines
         */
-        vec2<double> intersect(const Line&);
+        vec2<double> Intersect(const Line&);
 
         /*
             Return:
                 Closest coordinate on the line based on first point in points array
         */
-        vec2<double> getFirstCoordinates();
+        vec2<double> GetFirstCoordinates();
 
         /*
             Return:
                 Closest coordinate on the line based on last point in points array
         */
-        vec2<double> getLastCoordinates();
+        vec2<double> GetLastCoordinates();
 
 };
 

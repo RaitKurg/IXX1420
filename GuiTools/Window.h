@@ -17,11 +17,11 @@ class Window
 
         Window();
         ~Window();
-        void update();
-        void clear();
-        void handleEvents();
-        SDL_Surface * getSurface();
-        SDL_Renderer * getRenderer();
+        void Update();
+        void Clear();
+        void HandleEvents();
+        SDL_Surface * GetSurface();
+        SDL_Renderer * GetRenderer();
 
 };
 

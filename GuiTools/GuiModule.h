@@ -1,3 +1,9 @@
+/*
+    Description:
+        Graphical module to debug other modules
+    Author:
+        Marek Grencštein <marekgrencstein@gmail.com>
+*/
 #ifndef _GuiTools_GuiModule_h_
 #define _GuiTools_GuiModule_h_
 
@@ -6,8 +12,6 @@
 #include "../Map/MapModule.h"
 #include "Window.h"
 
-class RadarListener;
-
 class GuiModule : public BaseModule
 {
 
@@ -15,17 +19,16 @@ class GuiModule : public BaseModule
         GuiModule();
         virtual ~GuiModule();
 
-        void setRadarModule(RadarModule*);
-        void setMapModule(MapModule*);
-        bool windowNotClosed();
+        void SetRadarModule(RadarModule*);
+        void SetMapModule(MapModule*);
+        bool WindowNotClosed();
 
     protected:
-        void action();
+        void Action();
 
     private:
-        friend class RadarListener;
 
-        void drawLocalMap();
+        void DrawLocalMap();
 
         Window m_window;
         RadarModule * m_radarModule;

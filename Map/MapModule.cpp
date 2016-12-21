@@ -12,42 +12,43 @@ MapModule::~MapModule()
 
 }
 
-void MapModule::setRadarModule(RadarModule * radarModule)
+void MapModule::SetRadarModule(RadarModule * radarModule)
 {
     m_radarModule = radarModule;
 }
 
-void MapModule::setMoveModule(MoveModule * moveModule)
+void MapModule::SetMoveModule(MoveModule * moveModule)
 {
     m_moveModule = moveModule;
 }
 
-void MapModule::action()
+void MapModule::Action()
 {
-    std::vector<RadarPoint> points = m_radarModule->getPoints();
+    std::vector<RadarPoint> points = m_radarModule->GetPoints();
 
     std::vector<Line*> lines;
 
     Line * activeLine = new Line();
-    vec2<double> prevPoint = points[0].getCoordinates();
+    vec2<double> prevPoint = points[0].GetCoordinates();
     vec2<double> curPoint;
 
     for (int i = 1; i + 1 < points.size(); ++i) {
 
-        curPoint = points[i].getCoordinates();
-        points[i+1].getCoordinates();
+        curPoint = points[i].GetCoordinates();
+        points[i+1].GetCoordinates();
 
         vec2<double> AB = curPoint - prevPoint;
-        vec2<double> BC = points[i+1].getCoordinates() - curPoint;
+        vec2<double> BC = points[i+1].GetCoordinates() - curPoint;
 
         double dot = vec2<double>::dot(AB, BC);
-        double angleSq = (dot*dot)/(AB.lengthSq() * BC.lengthSq());
+        double angleSq = (dot*dot)/(AB.LengthSq() * BC.LengthSq());
 
         if (angleSq >= 0.5) {
-            activeLine->push(curPoint);
+            activeLine->Push(curPoint);
         } else {
             lines.push_back(activeLine);
             activeLine = new Line();
+            activeLine->Push(curPoint);
         }
 
         prevPoint = curPoint;
@@ -56,7 +57,7 @@ void MapModule::action()
     lines.push_back(activeLine);
 
     for (int i = 0; i < lines.size(); ++i) {
-        lines[i]->generateRegressionLine();
+        lines[i]->GenerateRegressionLine();
     }
 
     vec2<double> intersection;
@@ -68,17 +69,17 @@ void MapModule::action()
         if (connectToPrevious) {
             A = intersection;
         } else {
-            A = lines[i]->getFirstCoordinates();
+            A = lines[i]->GetFirstCoordinates();
         }
         connectToPrevious = lines[i]->isConnectedToNext;
         //B
         if (connectToPrevious) {
-            intersection = lines[i]->intersect(*lines[i+1]);
+            intersection = lines[i]->Intersect(*lines[i+1]);
             B = intersection;
         } else {
-            B = lines[i]->getLastCoordinates();
+            B = lines[i]->GetLastCoordinates();
         }
-        m_map.insertSection(A, B);
+        m_map.InsertSection(A, B);
     }
 
     // clean-up
@@ -88,7 +89,7 @@ void MapModule::action()
 
 }
 
-Map& MapModule::getMap()
+Map& MapModule::GetMap()
 {
     return m_map;
 }

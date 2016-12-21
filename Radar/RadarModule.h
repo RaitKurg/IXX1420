@@ -8,8 +8,6 @@
 #define _Radar_RadarModule_h_
 
 #include "../Base/BaseModule.h"
-#include "../Base/MotorActuator.h"
-#include "../Base/UltrasonicSensor.h"
 #include "RadarPoint.h"
 #include <vector>
 
@@ -20,10 +18,10 @@ class RadarModule : public BaseModule
         RadarModule();
         virtual ~RadarModule();
 
-        std::vector<RadarPoint> getPoints() const;
+        std::vector<RadarPoint> GetPoints() const;
 
     protected:
-        void action();
+        void Action();
 
     private:
 
@@ -32,18 +30,6 @@ class RadarModule : public BaseModule
                 Contains radar data
         */
         std::vector<RadarPoint> m_points;
-
-        /*
-            Description:
-                Ultrasonic sensor for distance
-        */
-        UltrasonicSensor m_sensor;
-
-        /*
-            Description:
-                Motor to change ultrasonic sensor direction
-        */
-        MotorActuator m_motor;
     
 };
 

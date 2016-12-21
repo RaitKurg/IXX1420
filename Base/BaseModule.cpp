@@ -10,13 +10,13 @@ BaseModule::~BaseModule()
 
 }
 
-void BaseModule::execute() 
+void BaseModule::Execute() 
 {
-    action();
-    for (std::vector<EventListener*>::iterator i = m_listeners.begin(); i < m_listeners.end(); (*i)->call(),i++);
+    Action();
+    for (std::vector<EventListener*>::iterator i = m_listeners.begin(); i < m_listeners.end(); (*i)->Call(),i++);
 }
 
-void BaseModule::addListener(EventListener * listener)
+void BaseModule::AddListener(EventListener * listener)
 {
     m_listeners.push_back(listener);
 }

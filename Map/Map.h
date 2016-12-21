@@ -25,25 +25,25 @@ class Map
                 vec2<double> a - first point
                 vec2<double> b - second point
         */
-        void insertSection(vec2<double>, vec2<double>);
+        void InsertSection(vec2<double>, vec2<double>);
 
         /*
             Description:
                 Merges a sections (cleanup)
         */
-        void merge();
+        void Merge();
 
         /*
             Description:
                 Returns vector of map points
         */
-        std::vector<vec2<double>>& getPoints();
+        std::vector<vec2<double>>& GetPoints();
 
         /*
             Description:
                 Returns indices
         */
-        std::vector<int>& getIndices();
+        std::vector<int>& GetIndices();
 
 
     private:

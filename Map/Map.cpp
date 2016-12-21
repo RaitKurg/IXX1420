@@ -10,7 +10,7 @@ Map::~Map()
 
 }
 
-void Map::insertSection(vec2<double> a, vec2<double> b)
+void Map::InsertSection(vec2<double> a, vec2<double> b)
 {
     int ia = -1;
     int ib = -1;
@@ -44,20 +44,21 @@ void Map::insertSection(vec2<double> a, vec2<double> b)
     m_indices.push_back(ib);
 }
 
-void Map::merge()
+void Map::Merge()
 {
     /*
         Iterate through indices and perform merge for overlaps
         !Is not critical
+        @TODO
     */
 }
 
-std::vector<vec2<double>>& Map::getPoints()
+std::vector<vec2<double>>& Map::GetPoints()
 {
     return m_points;
 }
 
-std::vector<int>& Map::getIndices()
+std::vector<int>& Map::GetIndices()
 {
     return m_indices;
 }

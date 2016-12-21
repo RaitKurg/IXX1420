@@ -11,17 +11,17 @@ int main(int argc, char ** argv)
     MapModule map;
     GuiModule gui;
 
-    map.setRadarModule(&radar);
-    map.setMoveModule(&move);
-    gui.setRadarModule(&radar);
-    gui.setMapModule(&map);
+    map.SetRadarModule(&radar);
+    map.SetMoveModule(&move);
+    gui.SetRadarModule(&radar);
+    gui.SetMapModule(&map);
 
-    radar.execute();
-    map.execute();
-    move.execute();
-    gui.execute();
+    radar.Execute();
+    map.Execute();
+    move.Execute();
+    gui.Execute();
 
-    while (gui.windowNotClosed());
+    while (gui.WindowNotClosed());
 
     return 0;
 }

@@ -18,10 +18,10 @@ class RadarPoint
         RadarPoint();
         virtual ~RadarPoint();
 
-        double getDistance() const;
-        double getAngle() const;
+        double GetDistance() const;
+        double GetAngle() const;
 
-        vec2<double> getCoordinates();
+        vec2<double> GetCoordinates();
 
     private:
 
@@ -31,9 +31,9 @@ class RadarPoint
         */
         friend class RadarModule;
 
-        void setDistance(const double d);
-        void setAngle(const double a);
-        void calcCoordinates();
+        void SetDistance(const double d);
+        void SetAngle(const double a);
+        void CalcCoordinates();
 
         double m_distance;
         double m_angle;

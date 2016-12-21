@@ -11,7 +11,7 @@ MoveModule::~MoveModule()
 
 }
 
-void MoveModule::action()
+void MoveModule::Action()
 {
-    std::cout << "Move action\n";
+    std::cout << "Move Action\n";
 }

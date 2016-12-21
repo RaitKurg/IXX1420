@@ -23,17 +23,17 @@ class MapModule : public BaseModule
         MapModule();
         ~MapModule();
 
-        void setRadarModule(RadarModule * radarModule);
-        void setMoveModule(MoveModule * moveModule);
+        void SetRadarModule(RadarModule * radarModule);
+        void SetMoveModule(MoveModule * moveModule);
 
         /*
             Description:
                 Returns reference to Map
         */
-        Map& getMap();
+        Map& GetMap();
 
     protected:
-        void action();
+        void Action();
 
     private:
         RadarModule * m_radarModule;

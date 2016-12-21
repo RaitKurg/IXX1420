@@ -17,7 +17,7 @@ class MoveModule : public BaseModule
         virtual ~MoveModule();
 
     protected:
-        void action();
+        void Action();
 
     private:
     
